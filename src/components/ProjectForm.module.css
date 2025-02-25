@@ -2,12 +2,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0px;
   padding: 0px 20px;
 }
 .componentHolder {
   min-height: 400px;
-  min-width: 400px;
+  min-width: 450px;
 }
 .backBtn {
   background-color: transparent;
@@ -58,5 +58,8 @@
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 20px;
+  min-width: 300px;
+  max-width: 550px;
+  width: 500px;
   min-height: 500px;
 }
