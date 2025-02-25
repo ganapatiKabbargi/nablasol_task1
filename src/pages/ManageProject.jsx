@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import { FaUserGroup } from "react-icons/fa6";
 import styles from "./ManageProject.module.css";
 
-function ManageProject() {
+function ManageProject({ whoCanManage, updateFields }) {
   return (
     <div>
       <div className={styles.header}>Who can manage projects</div>
@@ -13,7 +13,12 @@ function ManageProject() {
         Don't panic - You can also customize this permissions in settings
       </div>
       <div className={styles.manageProjectContainer}>
-        <div className={styles.manageProjectField}>
+        <div
+          className={`${styles.manageProjectField} ${
+            whoCanManage === "EveryOne" && styles.active
+          }`}
+          onClick={() => updateFields({ whoCanManage: "EveryOne" })}
+        >
           <div className={styles.everyOneIcon}>
             <IoIosPeople size={40} />
           </div>
@@ -24,7 +29,12 @@ function ManageProject() {
             </div>
           </div>
         </div>
-        <div className={styles.manageProjectField}>
+        <div
+          className={`${styles.manageProjectField} ${
+            whoCanManage === "Admins" && styles.active
+          }`}
+          onClick={() => updateFields({ whoCanManage: "Admins" })}
+        >
           <div className={styles.everyOneIcon}>
             <CgProfile size={40} />
           </div>
@@ -35,7 +45,12 @@ function ManageProject() {
             </div>
           </div>
         </div>
-        <div className={styles.manageProjectField}>
+        <div
+          className={`${styles.manageProjectField} ${
+            whoCanManage === "specific people" && styles.active
+          }`}
+          onClick={() => updateFields({ whoCanManage: "specific people" })}
+        >
           <div className={styles.everyOneIcon}>
             <FaUserGroup size={40} />
           </div>

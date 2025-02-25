@@ -16,21 +16,30 @@ const INITIAL_DATA = {
   projectType: "",
   projectHourlyRate: "",
   budget: "",
-  checkboxData: [],
+  checkboxData: [false,false],
 };
 function ProjectForm() {
   const [data, setData] = useState(INITIAL_DATA);
+  function updateFields(fields) {
+    setData((prev) => {
+      return { ...prev, ...fields };
+    });
+  }
   const [currentPage, setCurrentPage] = useState(0);
 
   let pages = [
-    <CreateProject />,
-    <SelectView />,
-    <ManageProject />,
-    <ProjectType />,
+    <CreateProject {...data} updateFields={updateFields} />,
+    <SelectView {...data} updateFields={updateFields} />,
+    <ManageProject {...data} updateFields={updateFields} />,
+    <ProjectType {...data} updateFields={updateFields} />,
   ];
   function submitHandler(e) {
     e.preventDefault();
-    setCurrentPage((prev) => prev + 1);
+    if (currentPage < 3) {
+      setCurrentPage((prev) => prev + 1);
+    } else {
+      console.log(data);
+    }
   }
 
   return (
@@ -56,9 +65,9 @@ function ProjectForm() {
           <button
             type="submit"
             className={styles.nextBtn}
-            disabled={currentPage > 2 ? true : false}
+            disabled={currentPage > 3 ? true : false}
           >
-            Next
+            {currentPage === 3 ? "Create Project" : "Next"}
           </button>
         </div>
       </form>

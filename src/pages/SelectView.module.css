@@ -51,6 +51,13 @@
 .listView:hover .listIcon {
   border: 3px solid rgb(70, 104, 184);
 }
+.active {
+  color: #232;
+}
+.activeBorder {
+  border: 3px solid rgb(70, 104, 184);
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 
 @media screen and (min-width: 480px) and (max-width: 768px) {
   .selectViewContainer {

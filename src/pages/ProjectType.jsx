@@ -1,6 +1,12 @@
 import React from "react";
 import styles from "./ProjectType.module.css";
-function ProjectType() {
+function ProjectType({
+  projectType,
+  projectHourlyRate,
+  budget,
+  checkboxData,
+  updateFields,
+}) {
   return (
     <div>
       <div className={styles.header}>Project type</div>
@@ -8,14 +14,31 @@ function ProjectType() {
         Don't panic - You can also customize this types in settings
       </div>
       <div className={styles.buttonContainer}>
-        <button className={styles.buttonEl} type="button">
+        <button
+          className={`${styles.buttonEl} ${
+            projectType === "Times and Material" && styles.active
+          }`}
+          type="button"
+          onClick={(e) => updateFields({ projectType: e.target.textContent })}
+        >
           Times and Material
         </button>
-        <button className={styles.buttonEl} type="button">
+        <button
+          className={`${styles.buttonEl} ${
+            projectType === "Fixed Fee" && styles.active
+          }`}
+          type="button"
+          onClick={(e) => updateFields({ projectType: e.target.textContent })}
+        >
           Fixed Fee
         </button>
-        <button className={styles.buttonEl} type="button">
-          {" "}
+        <button
+          className={`${styles.buttonEl} ${
+            projectType === "Non-Billable" && styles.active
+          }`}
+          type="button"
+          onClick={(e) => updateFields({ projectType: e.target.textContent })}
+        >
           Non-Billable
         </button>
       </div>
@@ -31,6 +54,9 @@ function ProjectType() {
           className={styles.hourlyRate}
           list="hourlyProjectRate"
           placeholder="Project hourly rate"
+          onChange={(e) => updateFields({ projectHourlyRate: e.target.value })}
+          value={projectHourlyRate}
+          required
         />
         <datalist id="hourlyProjectRate">
           <option value="50$">50$</option>
@@ -51,6 +77,9 @@ function ProjectType() {
           className={styles.hourlyRate}
           list="hourlyProjectRate"
           placeholder="Hours per person"
+          onChange={(e) => updateFields({ budget: e.target.value })}
+          value={budget}
+          required
         />
         <datalist id="hourlyProjectRate">
           <option value="50$">50$</option>
@@ -60,18 +89,43 @@ function ProjectType() {
       </div>
       <div className={styles.checkBoxContainer}>
         <div className={styles.inputFild}>
-          <input type="checkbox" name="" id="" />
-          <label htmlFor="" className={styles.labelEL}>
+          <input
+            type="checkbox"
+            name=""
+            id="budgetReset"
+            onChange={(e) => {
+              let newData = [e.target.checked, checkboxData[1]];
+              return updateFields({
+                checkboxData: newData,
+              });
+            }}
+          />
+          <label htmlFor="budgetReset" className={styles.labelEL}>
             Budget resets every month
           </label>
         </div>
       </div>
       <div className={styles.checkBoxContainer}>
         <div className={styles.inputFild}>
-          <input type="checkbox" name="" id="" />
-          <label htmlFor="" className={styles.labelEL}>
+          <input
+            type="checkbox"
+            name=""
+            id="sendMail"
+            onChange={(e) => {
+              let newData = [checkboxData[0], e.target.checked];
+              return updateFields({
+                checkboxData: newData,
+              });
+            }}
+          />
+          <label htmlFor="sendMail" className={styles.labelEL}>
             send email alerts if project exceeds{" "}
-            <input type="text" className={styles.percentage} /> % of budget
+            <input
+              type="text"
+              className={styles.percentage}
+              defaultValue={81}
+            />{" "}
+            % of budget
           </label>
         </div>
       </div>

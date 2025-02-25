@@ -76,6 +76,10 @@ input:focus {
 .percentage {
   width: 10%;
 }
+.active {
+  background-color: #26528b;
+  color: #f2f2f2;
+}
 
 @media screen and (max-width: 479px) {
   .buttonContainer {
