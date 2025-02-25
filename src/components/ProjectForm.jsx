@@ -3,40 +3,65 @@ import styles from "./ProjectForm.module.css";
 import CreateProject from "../pages/CreateProject";
 import SelectView from "../pages/SelectView";
 import ManageProject from "../pages/ManageProject";
+import ProjectType from "../pages/ProjectType";
+
+const INITIAL_DATA = {
+  projectName: "",
+  client: "",
+  fromDate: "",
+  toDate: "",
+  notes: "",
+  selectedView: "",
+  whoCanManage: "",
+  projectType: "",
+  projectHourlyRate: "",
+  budget: "",
+  checkboxData: [],
+};
 function ProjectForm() {
-  const [currentPage, setCurrentPage] = useState(1);
-  let pages = {
-    1: <CreateProject />,
-    2: <SelectView />,
-    3: <ManageProject />,
-  };
+  const [data, setData] = useState(INITIAL_DATA);
+  const [currentPage, setCurrentPage] = useState(0);
+
+  let pages = [
+    <CreateProject />,
+    <SelectView />,
+    <ManageProject />,
+    <ProjectType />,
+  ];
+  function submitHandler(e) {
+    e.preventDefault();
+    setCurrentPage((prev) => prev + 1);
+  }
+
   return (
     <div className={styles.formHolder}>
       <div className={styles.closeBtnContainer}>
         <button className={styles.closeBtn}>X</button>
       </div>
-      <div className={styles.componentHolder}>{pages[currentPage]}</div>
-      <div className={styles.buttonContainer}>
-        <button
-          className={styles.backBtn}
-          onClick={() => {
-            setCurrentPage((prev) => prev - 1);
-          }}
-          disabled={currentPage < 2 ? true : false}
-        >
-          back
-        </button>
+      <form action="" className={styles.formEl} onSubmit={submitHandler}>
+        <div className={styles.componentHolder}>{pages[currentPage]}</div>
 
-        <button
-          className={styles.nextBtn}
-          onClick={() => {
-            setCurrentPage((prev) => prev + 1);
-          }}
-          disabled={currentPage > 2 ? true : false}
-        >
-          Next
-        </button>
-      </div>
+        <div className={styles.buttonContainer}>
+          <button
+            type="button"
+            className={styles.backBtn}
+            onClick={() => {
+              setCurrentPage((prev) => prev - 1);
+            }}
+            disabled={currentPage < 1 ? true : false}
+          >
+            back
+          </button>
+
+          <button
+            type="submit"
+            className={styles.nextBtn}
+            disabled={currentPage > 2 ? true : false}
+          >
+            Next
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

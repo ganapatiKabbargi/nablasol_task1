@@ -1,0 +1,95 @@
+.header {
+  text-align: center;
+  font-weight: 500;
+  font-size: 18px;
+}
+.subHeading {
+  text-align: center;
+  font-size: 13px;
+  color: rgb(136, 136, 136);
+}
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: stretch;
+  border: 1px solid rgb(148, 148, 148);
+  border-radius: 5px;
+  margin: 20px 0px;
+}
+.buttonEl {
+  display: inline-block;
+  width: calc(100% / 3);
+  background-color: transparent;
+  border: 1px solid rgb(164, 164, 164);
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+  font: inherit;
+  appearance: none;
+  color: rgb(113, 113, 113);
+}
+.buttonEl:hover {
+  background-color: #26528b;
+  color: #f2f2f2;
+}
+.hourlyRateContainer {
+  text-align: start;
+}
+.hourly {
+  text-align: start;
+  font-weight: 500;
+}
+.hourlyDescription {
+  text-align: start;
+  font-size: 13px;
+  color: rgb(136, 136, 136);
+}
+.inputElContainer {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+}
+.hourlyRate {
+  width: 50%;
+}
+input {
+  margin: 10px 0px;
+  padding: 5px;
+}
+input::placeholder {
+  color: rgb(142, 140, 140);
+}
+input:focus {
+  border: 2px solid rgb(155, 194, 221);
+  outline: 2px solid rgb(155, 194, 221);
+}
+.labelEL {
+  font-size: 13px;
+  color: rgb(136, 136, 136);
+}
+.inputFild {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+.percentage {
+  width: 10%;
+}
+
+@media screen and (max-width: 479px) {
+  .buttonContainer {
+    flex-wrap: wrap;
+    border: none;
+  }
+  .buttonEl {
+    width: 100%;
+  }
+  .inputElContainer {
+    flex-direction: column;
+  }
+  .hourlyRate,
+  .selectedRate {
+    width: 100%;
+  }
+}
