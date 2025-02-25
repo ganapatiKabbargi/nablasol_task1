@@ -5,6 +5,10 @@
   margin-top: 20px;
   padding: 0px 20px;
 }
+.componentHolder {
+  min-height: 400px;
+  min-width: 400px;
+}
 .backBtn {
   background-color: transparent;
   margin: 0;
