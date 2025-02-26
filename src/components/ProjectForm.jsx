@@ -14,12 +14,14 @@ const INITIAL_DATA = {
   selectedView: "",
   whoCanManage: "",
   projectType: "",
-  projectHourlyRate: "",
-  budget: "",
-  checkboxData: [false,false],
+  projectRatePer: "",
+  projectRate: "",
+  durationPerPerson: "",
+  checkboxData: [false, false],
 };
 function ProjectForm() {
   const [data, setData] = useState(INITIAL_DATA);
+
   function updateFields(fields) {
     setData((prev) => {
       return { ...prev, ...fields };
@@ -33,12 +35,16 @@ function ProjectForm() {
     <ManageProject {...data} updateFields={updateFields} />,
     <ProjectType {...data} updateFields={updateFields} />,
   ];
+
   function submitHandler(e) {
     e.preventDefault();
     if (currentPage < 3) {
       setCurrentPage((prev) => prev + 1);
     } else {
-      console.log(data);
+      // localStorage.clear();
+      localStorage.setItem("userData", JSON.stringify(data));
+      alert("Data is stored in local storage");
+      window.location.reload();
     }
   }
 
@@ -61,7 +67,12 @@ function ProjectForm() {
           >
             back
           </button>
-
+          <div className={styles.pages}>
+            <span className={styles.currentSpan}></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
           <button
             type="submit"
             className={styles.nextBtn}

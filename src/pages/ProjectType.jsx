@@ -2,8 +2,9 @@ import React from "react";
 import styles from "./ProjectType.module.css";
 function ProjectType({
   projectType,
-  projectHourlyRate,
-  budget,
+  projectRatePer,
+  projectRate,
+  durationPerPerson,
   checkboxData,
   updateFields,
 }) {
@@ -54,16 +55,23 @@ function ProjectType({
           className={styles.hourlyRate}
           list="hourlyProjectRate"
           placeholder="Project hourly rate"
-          onChange={(e) => updateFields({ projectHourlyRate: e.target.value })}
-          value={projectHourlyRate}
+          onChange={(e) => updateFields({ projectRatePer: e.target.value })}
+          value={projectRatePer}
           required
         />
         <datalist id="hourlyProjectRate">
-          <option value="50$">50$</option>
-          <option value="100$">100$</option>
-          <option value="200$">200$</option>
+          <option value="Project Hourly Rate">Project Hourly Rate</option>
+          <option value="Project Daily Rate">Project Daily Rate</option>
+          <option value="Project Weekly Rate">Project Weekly Rate</option>
         </datalist>
-        <input type="text" className={styles.selectedRate} />
+        <input
+          type="text"
+          className={styles.selectedRate}
+          placeholder="Enter Amount"
+          required
+          value={projectRate}
+          onChange={(e) => updateFields({ projectRate: e.target.value })}
+        />
       </div>
       <div className={styles.hourlyRateContainer}>
         <div className={styles.hourly}>Budget</div>
@@ -75,16 +83,16 @@ function ProjectType({
         <input
           type="text"
           className={styles.hourlyRate}
-          list="hourlyProjectRate"
+          list="duration"
           placeholder="Hours per person"
-          onChange={(e) => updateFields({ budget: e.target.value })}
-          value={budget}
+          onChange={(e) => updateFields({ durationPerPerson: e.target.value })}
+          value={durationPerPerson}
           required
         />
-        <datalist id="hourlyProjectRate">
-          <option value="50$">50$</option>
-          <option value="100$">100$</option>
-          <option value="200$">200$</option>
+        <datalist id="duration">
+          <option value="Hours per person">Hours per person</option>
+          <option value="Days per person">Days per person</option>
+          <option value="Weeks per person">Weeks per person</option>
         </datalist>
       </div>
       <div className={styles.checkBoxContainer}>

@@ -6,8 +6,10 @@
   padding: 0px 20px;
 }
 .componentHolder {
-  min-height: 400px;
-  min-width: 450px;
+  max-width: 600px;
+  /* min-width: 480px; */
+  width: 100%;
+  min-height: 450px;
 }
 .backBtn {
   background-color: transparent;
@@ -20,8 +22,8 @@
   width: 80px;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid rgb(93, 110, 146);
-  color: rgb(94, 95, 176);
+  border: 1px solid #007bff;
+  color: #007bff;
 }
 .nextBtn {
   margin: 0;
@@ -34,7 +36,8 @@
   height: 40px;
   border-radius: 5px;
   display: inline-block;
-  background-color: rgb(52, 69, 166);
+  background-color: #007bff;
+  border: 1px solid #007bff;
   color: #fef;
 }
 .closeBtnContainer {
@@ -58,8 +61,33 @@
   border-radius: 5px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   padding: 20px;
-  min-width: 300px;
-  max-width: 550px;
-  /* width: 500px; */
+  max-width: 650px;
+  min-width: 450px;
+  width: 100%;
   min-height: 500px;
+  height: 100%;
+}
+.pages {
+  width: 60px;
+  display: flex;
+  justify-content: space-between;
+}
+.pages span {
+  background-color: #d0d0d0;
+  display: inline-block;
+  border-radius: 2px;
+  text-align: center;
+  width: 10px;
+  height: 10px;
+}
+.currentSpan {
+  display: inline-block;
+  width: 30px;
+}
+
+@media screen and (max-width: 580px) {
+  .formHolder {
+    max-width: 400px;
+    width: 100%;
+  }
 }

@@ -5,7 +5,7 @@ import styles from "./SelectView.module.css";
 
 function SelectView({ selectedView, updateFields }) {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <div className={styles.header}>Select a View</div>
       <div className={styles.subHeading}>
         You can also customize this views in settings

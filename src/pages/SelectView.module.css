@@ -12,6 +12,7 @@
   display: flex;
   justify-content: space-between;
   margin-top: 30px;
+  width: 100%;
 }
 .boardView {
   color: rgb(161, 165, 161);
@@ -46,16 +47,16 @@
   color: #232;
 }
 .boardView:hover .boardIcon {
-  border: 3px solid rgb(70, 104, 184);
+  border: 3px solid #007bff;
 }
 .listView:hover .listIcon {
-  border: 3px solid rgb(70, 104, 184);
+  border: 3px solid #007bff;
 }
 .active {
   color: #232;
 }
 .activeBorder {
-  border: 3px solid rgb(70, 104, 184);
+  border: 3px solid #007bff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
@@ -67,7 +68,7 @@
     gap: 20px;
   }
 }
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 580px) {
   .selectViewContainer {
     flex-direction: column;
     justify-content: center;
